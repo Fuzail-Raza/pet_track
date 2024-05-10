@@ -27,6 +27,7 @@ class _locationTrackState extends State<locationTrack> {
     getLocationUpdates();
     super.initState();
   }
+  // Todo Solve Network Exception
 
     Future<dynamic> saveLocation(collection, userData) async {
       try {
