@@ -6,7 +6,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
 class locationTrack extends StatefulWidget {
-  String email="fuzailraza161@gmail.com",petEmail="fr9g6smvt642";
+  final String email,petEmail;
   locationTrack({super.key,required this.email,required this.petEmail});
 
   @override
