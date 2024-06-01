@@ -1,2 +1,0 @@
-
-var APIKEY="AIzaSyBYfemSzzZN4oJEj6Xuw04EbZOvCo0jCfA";
