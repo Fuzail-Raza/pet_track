@@ -15,7 +15,6 @@
 ### Prerequisites
 - Flutter SDK: [Install Flutter](https://flutter.dev/docs/get-started/install)
 - Firebase Project: [Set up Firebase](https://firebase.google.com/docs/flutter/setup)
-- Google Maps API Key: [Get API Key](https://developers.google.com/maps/gmp-get-started)
 
 ### Installation
 
