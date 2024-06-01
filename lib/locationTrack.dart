@@ -4,16 +4,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class locationTrack extends StatefulWidget {
-  const locationTrack({super.key});
+  String email="fuzailraza161@gmail.com",petEmail="fr9g6smvt642";
+  locationTrack({super.key,required this.email,required this.petEmail});
 
   @override
   State<locationTrack> createState() => _locationTrackState();
 }
 
 class _locationTrackState extends State<locationTrack> {
+
+  // String email="fuzailraza161@gmail.com",petEmail="fr9g6smvt642";
 
   bool showSpinner=false;
 
@@ -29,14 +31,14 @@ class _locationTrackState extends State<locationTrack> {
   }
   // Todo Solve Network Exception
 
-    Future<dynamic> saveLocation(collection, userData) async {
+    Future<dynamic> saveLocation(email,petEmail,userData) async {
       try {
         var db = FirebaseFirestore.instance;
 
         await db
-            .collection(collection)
-            .doc(userData["Email"])
-            .set(userData, SetOptions(merge: false))
+            .collection(email)
+            .doc(petEmail)
+            .set(userData, SetOptions(merge: true))
             .then((value) => print("Written Successfully"))
             .onError((error, stackTrace) {
                   print("Error writing document: $error");
@@ -82,8 +84,7 @@ class _locationTrackState extends State<locationTrack> {
             setState(() {
               _current = LatLng(currentLocation.latitude!, currentLocation.longitude!);
               showSpinner=true;
-              dynamic response= saveLocation("PetLocation", {
-                "Email" : "fuzailraza161@gmail.com",
+              dynamic response= saveLocation(widget.email,widget.petEmail,{
                 "Lat":_current!.latitude,
                 "Long":_current!.longitude
 
@@ -102,8 +103,7 @@ class _locationTrackState extends State<locationTrack> {
             currentLocation.longitude != null) {
           setState(() {
             _current = LatLng(currentLocation.latitude!, currentLocation.longitude!);
-            if(saveLocation("PetLocation", {
-              "Email" : "fuzailraza161@gmail.com",
+            if(saveLocation(widget.email,widget.petEmail,{
               "Lat":_current!.latitude,
               "Long":_current!.longitude
 
@@ -132,10 +132,10 @@ class _locationTrackState extends State<locationTrack> {
       appBar: AppBar(
         title: Text("Location Tracker"),
         centerTitle: true,
-        backgroundColor: Color.fromRGBO(208, 187, 187, 1),
+        backgroundColor: Color.fromRGBO(92,84,112,0.75),
       ),
       body: Container(
-        color: Color.fromRGBO(190, 170, 150, 1),
+        color: Color(0xff352F44),
         child: Center(
           child: Padding(
             padding: const EdgeInsets.all(12.0),
@@ -144,7 +144,7 @@ class _locationTrackState extends State<locationTrack> {
               width: MediaQuery.of(context).size.height/2,
               // margin: EdgeInsets.all(100),
                 decoration: BoxDecoration(
-                    color: Color.fromRGBO(208, 187, 187, 0.7),
+                    color: Color.fromRGBO(219, 216, 227, 0.3),
                     borderRadius: BorderRadius.all(Radius.circular(7))
                 ),
                 child: Center(child: Padding(
@@ -154,7 +154,7 @@ class _locationTrackState extends State<locationTrack> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text("Location :-",style:TextStyle(
-                        fontSize: 18,fontWeight: FontWeight.w500
+                        fontSize: 20,fontWeight: FontWeight.w500,
                       ) ,),
                       Text("      ${_current!.latitude} , ${_current!.longitude}",style:TextStyle(
                           fontSize: 18,fontWeight: FontWeight.w500
