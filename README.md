@@ -113,12 +113,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-For any queries, please contact [your-email@example.com].
+For any queries, please contact [fuzailraza161@gmail.com].
 
 ---
 
 Enjoy using **Pettify** and keep your pets safe and happy! 🐾
 
 ---
-
-Replace `your-username` with your actual GitHub username and `your-email@example.com` with your actual contact email. Make sure you have set up the Firebase project and obtained the necessary API keys before running the app.
