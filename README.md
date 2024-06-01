@@ -3,7 +3,7 @@
 ## Overview
 **Pettify** is an all-in-one solution for pet owners, offering functionalities such as adding pets, setting task reminders, AI pet doctor consultations, shopping for pet essentials, and tracking your pets. This repository contains the module **PetTrack** which enables real-time location tracking of pets through a mobile app.
 
-## Features
+## Features of Main App
 - **Add Pets**: Register your pets with their details.
 - **Set Task Reminders**: Never miss a vet appointment or feeding time.
 - **AI Pet Doctor**: Consult with an AI-driven virtual vet.
@@ -21,7 +21,7 @@
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/Pettify.git
+   https://github.com/Fuzail-Raza/pet_track.git
    cd Pettify
    ```
 
