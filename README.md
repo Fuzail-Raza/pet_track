@@ -3,7 +3,7 @@
 ## Overview
 **Pettify** is an all-in-one solution for pet owners, offering functionalities such as adding pets, setting task reminders, AI pet doctor consultations, shopping for pet essentials, and tracking your pets. This repository contains the module **PetTrack** which enables real-time location tracking of pets through a mobile app.
 
-## Features
+## Features of Main App
 - **Add Pets**: Register your pets with their details.
 - **Set Task Reminders**: Never miss a vet appointment or feeding time.
 - **AI Pet Doctor**: Consult with an AI-driven virtual vet.
@@ -15,13 +15,12 @@
 ### Prerequisites
 - Flutter SDK: [Install Flutter](https://flutter.dev/docs/get-started/install)
 - Firebase Project: [Set up Firebase](https://firebase.google.com/docs/flutter/setup)
-- Google Maps API Key: [Get API Key](https://developers.google.com/maps/gmp-get-started)
 
 ### Installation
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/Pettify.git
+   https://github.com/Fuzail-Raza/pet_track.git
    cd Pettify
    ```
 
@@ -113,12 +112,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-For any queries, please contact [your-email@example.com].
+For any queries, please contact [fuzailraza161@gmail.com].
 
 ---
 
 Enjoy using **Pettify** and keep your pets safe and happy! 🐾
 
 ---
-
-Replace `your-username` with your actual GitHub username and `your-email@example.com` with your actual contact email. Make sure you have set up the Firebase project and obtained the necessary API keys before running the app.
