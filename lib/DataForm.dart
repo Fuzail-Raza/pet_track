@@ -1,5 +1,7 @@
+import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:pet_track/colorsScheme.dart';
 import 'package:simple_shadow/simple_shadow.dart';
 import 'package:pet_track/locationTrack.dart';
 
@@ -70,7 +72,11 @@ class _DataFormState extends State<DataForm> {
         child: SingleChildScrollView(
           child: Container(
             height: MediaQuery.of(context).size.height,
-            color: Color(0xff352F44),
+            decoration: BoxDecoration(
+              // color: BackgroundColor,
+              gradient: BackgroundColor,
+
+            ),
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Form(
@@ -84,7 +90,7 @@ class _DataFormState extends State<DataForm> {
                             top: 8.0, left: 8.0, right: 8.0, bottom: 6.0),
                         child: Text("Location Tracker",
                             style: TextStyle(
-                                color: Colors.white60,
+                                color: TextColor,
                                 fontSize: 28,
                                 fontWeight: FontWeight.w400)),
                       ),
@@ -109,7 +115,7 @@ class _DataFormState extends State<DataForm> {
                             return null;
                           }
                         },
-                        style: TextStyle(color: Colors.white60),
+                        style: TextStyle(color: TextColor),
                       ),
                     ),
                     SizedBox(height: 20),
@@ -121,7 +127,7 @@ class _DataFormState extends State<DataForm> {
                         },
                         style: ButtonStyle(
                           backgroundColor:
-                              MaterialStateProperty.all(Color(0xffDBD8E3)),
+                              MaterialStateProperty.all(ButtonColor),
                           minimumSize: MaterialStateProperty.all(Size(
                               MediaQuery.of(context).size.width / 2,
                               MediaQuery.of(context).size.height / 17)),
@@ -144,7 +150,8 @@ class _DataFormState extends State<DataForm> {
                         child: Container(
                           width: MediaQuery.of(context).size.width / 1.4,
                           decoration: BoxDecoration(
-                              color: Color.fromRGBO(219, 216, 227, 0.3),
+                              color: listBackgroundColor,
+                              // gradient: listBackgroundColor,
                               borderRadius: BorderRadius.circular(10)),
                           child: SimpleShadow(
                             child: Padding(
@@ -154,7 +161,7 @@ class _DataFormState extends State<DataForm> {
                                     style: TextStyle(
                                         fontSize: 24,
                                         fontWeight: FontWeight.w400,
-                                        color: Colors.white60)),
+                                        color: TextColor)),
                               ),
                             ),
                           ),
@@ -169,56 +176,61 @@ class _DataFormState extends State<DataForm> {
                         : Visibility(
                             visible: isDataFetched,
                             child: SimpleShadow(
-                              child: Container(
-                                height:
-                                    MediaQuery.of(context).size.height / 1.7,
-                                width: MediaQuery.of(context).size.width,
-                                decoration: BoxDecoration(
-                                    color: Color(0xff5C5470),
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: ListView.separated(
-                                  itemBuilder: (context, index) {
-                                    return Padding(
-                                      padding: const EdgeInsets.all(4.0),
-                                      child: ListTile(
-                                        onTap: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      locationTrack(
-                                                        petEmail:
-                                                            fetchedData[index]
-                                                                ["Email"],
-                                                        email:
-                                                            fetchedData[index]
-                                                                ["userEmail"],
-                                                      )));
-                                        },
-                                        leading: CircleAvatar(
-                                          backgroundImage: NetworkImage(
-                                              fetchedData[index]["Photo"]),
+                              child: BlurryContainer(
+                                blur: 10,
+                                color: listBackgroundColor,
+                                child: Container(
+                                  height:
+                                      MediaQuery.of(context).size.height / 1.7,
+                                  width: MediaQuery.of(context).size.width,
+                                  decoration: BoxDecoration(
+                                      // color: Color(0xff5C5470),
+                                      color: Colors.transparent,
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: ListView.separated(
+                                    itemBuilder: (context, index) {
+                                      return Padding(
+                                        padding: const EdgeInsets.all(4.0),
+                                        child: ListTile(
+                                          onTap: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        locationTrack(
+                                                          petEmail:
+                                                              fetchedData[index]
+                                                                  ["Email"],
+                                                          email:
+                                                              fetchedData[index]
+                                                                  ["userEmail"],
+                                                        )));
+                                          },
+                                          leading: CircleAvatar(
+                                            backgroundImage: NetworkImage(
+                                                fetchedData[index]["Photo"]),
+                                          ),
+                                          title: Text(fetchedData[index]["Name"],
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: TextColor)),
+                                          subtitle: Text(
+                                              fetchedData[index]["oneLine"],
+                                              style: TextStyle(
+                                                  fontSize: 17,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: Colors.grey.shade900)),
+                                          trailing:
+                                              Icon(Icons.navigate_next_outlined),
                                         ),
-                                        title: Text(fetchedData[index]["Name"],
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.white60)),
-                                        subtitle: Text(
-                                            fetchedData[index]["oneLine"],
-                                            style: TextStyle(
-                                                fontSize: 17,
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.grey.shade900)),
-                                        trailing:
-                                            Icon(Icons.navigate_next_outlined),
-                                      ),
-                                    );
-                                  },
-                                  separatorBuilder: (context, index) {
-                                    return Divider(thickness: 2);
-                                  },
-                                  itemCount: fetchedData.length,
+                                      );
+                                    },
+                                    separatorBuilder: (context, index) {
+                                      return Divider(thickness: 2);
+                                    },
+                                    itemCount: fetchedData.length,
+                                  ),
                                 ),
                               ),
                             ),

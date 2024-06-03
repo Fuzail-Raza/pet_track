@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+import 'package:pet_track/colorsScheme.dart';
 
 class locationTrack extends StatefulWidget {
   final String email,petEmail;
@@ -132,10 +133,18 @@ class _locationTrackState extends State<locationTrack> {
       appBar: AppBar(
         title: Text("Location Tracker"),
         centerTitle: true,
-        backgroundColor: Color.fromRGBO(92,84,112,0.75),
+        // backgroundColor: appBackgroundColor,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: appBackgroundColor
+          ),
+        ),
       ),
       body: Container(
-        color: Color(0xff352F44),
+        decoration: BoxDecoration(
+          // color: BackgroundColor,
+          gradient: BackgroundColor
+        ),
         child: Center(
           child: Padding(
             padding: const EdgeInsets.all(12.0),
@@ -144,7 +153,8 @@ class _locationTrackState extends State<locationTrack> {
               width: MediaQuery.of(context).size.height/2,
               // margin: EdgeInsets.all(100),
                 decoration: BoxDecoration(
-                    color: Color.fromRGBO(219, 216, 227, 0.3),
+                    color: listBackgroundColor,
+                    // gradient: appBackgroundColor,
                     borderRadius: BorderRadius.all(Radius.circular(7))
                 ),
                 child: Center(child: Padding(
@@ -155,9 +165,11 @@ class _locationTrackState extends State<locationTrack> {
                     children: [
                       Text("Location :-",style:TextStyle(
                         fontSize: 20,fontWeight: FontWeight.w500,
+                        color: LocationTextColor
                       ) ,),
                       Text("      ${_current!.latitude} , ${_current!.longitude}",style:TextStyle(
-                          fontSize: 18,fontWeight: FontWeight.w500
+                          fontSize: 18,fontWeight: FontWeight.w500,
+                        color: LocationTextColor
                       ) ,),
                     ],
                   ) : InkWell(
