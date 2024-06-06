@@ -86,8 +86,8 @@ class _locationTrackState extends State<locationTrack> {
               _current = LatLng(currentLocation.latitude!, currentLocation.longitude!);
               showSpinner=true;
               dynamic response= saveLocation(widget.email,widget.petEmail,{
-                "Lat":_current!.latitude,
-                "Long":_current!.longitude
+                "LAT":_current!.latitude,
+                "LONG":_current!.longitude
 
               });
               showSpinner=true;
